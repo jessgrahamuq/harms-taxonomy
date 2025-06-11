@@ -126,6 +126,22 @@
             font-family: 'Figtree', Arial, sans-serif;
         }
         
+        /* Fallback - ensure something always shows */
+        .mobile-fallback {
+            display: none;
+            font-family: 'Figtree', Arial, sans-serif;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            margin: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-fallback h2 {
+            color: #a32035;
+            margin-bottom: 15px;
+        }
+        
         .severity-card {
             background: white;
             margin-bottom: 20px;
@@ -233,10 +249,36 @@
             .card-layout {
                 display: block !important;
             }
+            
+            .mobile-fallback {
+                display: none !important;
+            }
         }
         
         /* Force card layout for any screen that might be mobile */
         @media screen and (max-device-width: 768px) {
+            .table-container {
+                display: none !important;
+            }
+            
+            .card-layout {
+                display: block !important;
+            }
+            
+            .mobile-fallback {
+                display: none !important;
+            }
+        }
+        
+        /* Emergency fallback if both table and cards are hidden */
+        @media screen and (max-width: 768px) {
+            body:not(:has(.card-layout:not([style*="display: none"]))) .mobile-fallback {
+                display: block !important;
+            }
+        }
+        
+        /* Simplified mobile detection for problematic environments */
+        @media only screen and (max-width: 768px) {
             .table-container {
                 display: none !important;
             }
@@ -516,6 +558,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- Emergency fallback for mobile if neither table nor cards show -->
+    <div class="mobile-fallback">
+        <h2>AI Risk Severity Levels</h2>
+        <p><strong>Minor Severity:</strong> Minor to moderate injuries, minimal disruption, mildly offensive content, minor bias</p>
+        <p><strong>Limited Severity:</strong> Severe to life-threatening injuries, moderate local disruption, highly offensive content, clear discrimination</p>
+        <p><strong>Moderate Severity:</strong> Loss of life (1-99 casualties), widespread regional disruption, targeted harassment, widespread discrimination</p>
+        <p><strong>Significant Severity:</strong> Mass casualties (100-1000+ casualties), regional infrastructure collapse, large-scale attacks, systematic rights violations</p>
+        <p><strong>Catastrophic Severity:</strong> Existential threats, global infrastructure collapse, social breakdown, global end of democracy</p>
     </div>
 </body>
 </html>
