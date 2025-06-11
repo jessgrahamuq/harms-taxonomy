@@ -137,11 +137,21 @@
         
         .card-header {
             padding: 15px;
-            color: white;
             font-weight: 600;
             text-align: center;
             font-family: 'Figtree', Arial, sans-serif;
             font-size: 18px;
+        }
+        
+        .card-header.minor-severity-header,
+        .card-header.limited-severity-header,
+        .card-header.moderate-severity-header {
+            color: #000000;
+        }
+        
+        .card-header.significant-severity-header,
+        .card-header.catastrophic-severity-header {
+            color: #ffffff;
         }
         
         .card-content {
