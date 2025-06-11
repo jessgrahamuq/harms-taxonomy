@@ -14,6 +14,7 @@
             font-size: 14px;
         }
         
+        /* Desktop table */
         .table-container {
             overflow-x: auto;
             background: white;
@@ -25,7 +26,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 320px;
+            min-width: 700px;
             font-family: 'Figtree', Arial, sans-serif;
         }
         
@@ -49,17 +50,14 @@
         }
         
         .severity-col {
-            width: 15%;
+            width: 100px;
+            min-width: 100px;
             font-weight: 600;
             text-align: center;
             position: sticky;
             left: 0;
             z-index: 5;
             font-size: 12px;
-        }
-        
-        .content-col {
-            width: 21.25%;
         }
         
         /* Color classes */
@@ -74,90 +72,241 @@
         .catastrophic-header { background-color: #bd0026; color: #fff; }
         .catastrophic-bg { background-color: #e06666; color: #fff; }
         
-        /* Simple mobile adjustments */
-        @media (max-width: 768px) {
-            body { padding: 1px; }
-            th, td { 
-                padding: 2px; 
-                font-size: 7px; 
-                line-height: 1.0;
+        /* Mobile card layout - hidden by default */
+        .card-layout {
+            display: none;
+            font-family: 'Figtree', Arial, sans-serif;
+        }
+        
+        .severity-card {
+            background: white;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            padding: 16px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        .card-content {
+            padding: 16px;
+        }
+        
+        .card-section {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .card-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: #a32035;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .section-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Switch to cards on mobile */
+        @media screen and (max-width: 768px) {
+            .table-container {
+                display: none;
             }
-            .severity-col { 
-                font-size: 6px;
-                width: 8%;
+            
+            .card-layout {
+                display: block;
             }
-            .content-col {
-                width: 23%;
+            
+            body {
+                padding: 12px;
             }
         }
         
-        @media (max-width: 480px) {
-            body { padding: 0px; }
-            th, td { 
-                padding: 1px; 
-                font-size: 6px; 
-                line-height: 0.9;
-            }
-            .severity-col { 
-                font-size: 5px;
-                width: 7%;
-            }
-            .content-col {
-                width: 23.25%;
-            }
+        /* Ensure all text uses Figtree */
+        * {
+            font-family: 'Figtree', Arial, sans-serif !important;
         }
     </style>
 </head>
 <body>
+    <!-- Desktop Table -->
     <div class="table-container">
         <table>
             <thead>
                 <tr>
                     <th class="severity-col">Severity Level</th>
-                    <th class="content-col">1. People & Planet</th>
-                    <th class="content-col">2. Assets & Economy</th>
-                    <th class="content-col">3. Information Integrity</th>
-                    <th class="content-col">4. Rights & Governance</th>
+                    <th>1. People & Planet</th>
+                    <th>2. Assets & Economy</th>
+                    <th>3. Information Integrity</th>
+                    <th>4. Rights & Governance</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="severity-col minor-header">Minor severity</td>
-                    <td class="minor-bg content-col">Minor injuries (scrapes, cuts, sprains) to moderate injuries (fractures); Minimal, localized impacts; Fully reversible to minor, reversible damage</td>
-                    <td class="minor-bg content-col">Minimal disruption e.g. brief traffic-control system outage to brief, localized disruption e.g. Localized power outage; &lt;$10,000</td>
-                    <td class="minor-bg content-col">Content mildly offensive to small minority (e.g., minor profanity) to content moderately offensive to a minority (e.g., slurs); Minor privacy breach involving non-identifiable data affecting &lt;100 individuals to privacy breach involving identifiable data affecting &lt;100 individuals</td>
-                    <td class="minor-bg content-col">Minor bias to noticeable bias; Slight irregularities in some democratic processes (e.g., minor voting irregularities) to minor violations in democratic processes (e.g., limited misinformation)</td>
+                    <td class="minor-bg">Minor injuries (scrapes, cuts, sprains) to moderate injuries (fractures); Minimal, localized impacts; Fully reversible to minor, reversible damage</td>
+                    <td class="minor-bg">Minimal disruption e.g. brief traffic-control system outage to brief, localized disruption e.g. Localized power outage; &lt;$10,000</td>
+                    <td class="minor-bg">Content mildly offensive to small minority (e.g., minor profanity) to content moderately offensive to a minority (e.g., slurs); Minor privacy breach involving non-identifiable data affecting &lt;100 individuals to privacy breach involving identifiable data affecting &lt;100 individuals</td>
+                    <td class="minor-bg">Minor bias to noticeable bias; Slight irregularities in some democratic processes (e.g., minor voting irregularities) to minor violations in democratic processes (e.g., limited misinformation)</td>
                 </tr>
                 <tr>
                     <td class="severity-col limited-header">Limited severity</td>
-                    <td class="limited-bg content-col">Severe injuries to life-threatening injuries; Moderate, mostly reversible to significant, partially reversible</td>
-                    <td class="limited-bg content-col">Moderate local disruption e.g. regional traffic disruptions to significant local disruption e.g. city-wide power outage; $10,000-$1M</td>
-                    <td class="limited-bg content-col">Highly offensive content (e.g., hate speech) to harmful misinformation affecting thousands of people (e.g., widespread false narratives); Privacy breach involving identifiable data affecting 100-999 individuals to privacy breach involving identifiable data affecting 1,000–1,000,000 individuals</td>
-                    <td class="limited-bg content-col">Clear discrimination to systemic discrimination; Clear violations in democratic processes (e.g., significant misinformation campaigns) to significant undermining of democratic institutions (e.g., manipulation of elections)</td>
+                    <td class="limited-bg">Severe injuries to life-threatening injuries; Moderate, mostly reversible to significant, partially reversible</td>
+                    <td class="limited-bg">Moderate local disruption e.g. regional traffic disruptions to significant local disruption e.g. city-wide power outage; $10,000-$1M</td>
+                    <td class="limited-bg">Highly offensive content (e.g., hate speech) to harmful misinformation affecting thousands of people (e.g., widespread false narratives); Privacy breach involving identifiable data affecting 100-999 individuals to privacy breach involving identifiable data affecting 1,000–1,000,000 individuals</td>
+                    <td class="limited-bg">Clear discrimination to systemic discrimination; Clear violations in democratic processes (e.g., significant misinformation campaigns) to significant undermining of democratic institutions (e.g., manipulation of elections)</td>
                 </tr>
                 <tr>
                     <td class="severity-col moderate-header">Moderate severity</td>
-                    <td class="moderate-bg content-col">Loss of life (1-9 casualties) to multiple casualties (10-99 casualties); Major, long-term effects to severe, ecosystem-level damage e.g. endangering of species</td>
-                    <td class="moderate-bg content-col">Widespread regional disruption e.g. multiple towns lose Internet to critical service failure e.g. hospitals unable to function; $1M-$100M</td>
-                    <td class="moderate-bg content-col">Targeted harassment affecting thousands of people (e.g., coordinated trolling) to incitement to violence affecting thousands of people; Privacy breach affecting &gt;1 M individuals to erosion of core democratic principles (e.g., systematic voter suppression)</td>
-                    <td class="moderate-bg content-col">Widespread discrimination to institutionalized discrimination; Significant undermining of democratic institutions (e.g., manipulation of elections) to subversion of democratic processes (e.g., authoritarian influence on elections)</td>
+                    <td class="moderate-bg">Loss of life (1-9 casualties) to multiple casualties (10-99 casualties); Major, long-term effects to severe, ecosystem-level damage e.g. endangering of species</td>
+                    <td class="moderate-bg">Widespread regional disruption e.g. multiple towns lose Internet to critical service failure e.g. hospitals unable to function; $1M-$100M</td>
+                    <td class="moderate-bg">Targeted harassment affecting thousands of people (e.g., coordinated trolling) to incitement to violence affecting thousands of people; Privacy breach affecting &gt;1 M individuals to erosion of core democratic principles (e.g., systematic voter suppression)</td>
+                    <td class="moderate-bg">Widespread discrimination to institutionalized discrimination; Significant undermining of democratic institutions (e.g., manipulation of elections) to subversion of democratic processes (e.g., authoritarian influence on elections)</td>
                 </tr>
                 <tr>
                     <td class="severity-col significant-header">Significant severity</td>
-                    <td class="significant-bg content-col">Mass casualties (100-999 casualties) to large-scale loss of life (1000+ casualties); Widespread, ecosystem collapse to irreversible damage to habitats e.g. extinction of species</td>
-                    <td class="significant-bg content-col">Regional infrastructure collapse e.g. multiple cities without power to national infrastructure failure e.g. nationwide Internet blackout; $100M-$10B</td>
-                    <td class="significant-bg content-col">Large-scale coordinated attacks (e.g., nationwide disinformation) to mass radicalization leading to societal unrest; Societal-level privacy collapse to societal-level privacy collapse with widespread surveillance</td>
-                    <td class="significant-bg content-col">Systematic rights violations affecting hundreds of thousands of individuals to apartheid-like conditions or oppression at global scale; Breakdown of key democratic institutions (e.g., parliament dissolution) to authoritarian shift with significant democratic erosion</td>
+                    <td class="significant-bg">Mass casualties (100-999 casualties) to large-scale loss of life (1000+ casualties); Widespread, ecosystem collapse to irreversible damage to habitats e.g. extinction of species</td>
+                    <td class="significant-bg">Regional infrastructure collapse e.g. multiple cities without power to national infrastructure failure e.g. nationwide Internet blackout; $100M-$10B</td>
+                    <td class="significant-bg">Large-scale coordinated attacks (e.g., nationwide disinformation) to mass radicalization leading to societal unrest; Societal-level privacy collapse to societal-level privacy collapse with widespread surveillance</td>
+                    <td class="significant-bg">Systematic rights violations affecting hundreds of thousands of individuals to apartheid-like conditions or oppression at global scale; Breakdown of key democratic institutions (e.g., parliament dissolution) to authoritarian shift with significant democratic erosion</td>
                 </tr>
                 <tr>
                     <td class="severity-col catastrophic-header">Catastrophic severity</td>
-                    <td class="catastrophic-bg content-col">Extremely wide-spread death and suffering (&gt;1 million casualties) to existential threat to humanity; Continental-scale devastation or extinction of numerous species to global ecological collapse</td>
-                    <td class="catastrophic-bg content-col">Continental-scale failure e.g. multiple countries to global infrastructure collapse e.g. worldwide power-grid failure; $10B+</td>
-                    <td class="catastrophic-bg content-col">Social breakdown due to severe divisions (e.g., civil wars) to global breakdown of truth and trust (e.g., inability to discern facts); Total surveillance state to absolute loss of privacy worldwide</td>
-                    <td class="catastrophic-bg content-col">Near-total rights suppression or global human-rights catastrophe to systemic oppression at global scale; Authoritarian shift to global end of democracy</td>
+                    <td class="catastrophic-bg">Extremely wide-spread death and suffering (&gt;1 million casualties) to existential threat to humanity; Continental-scale devastation or extinction of numerous species to global ecological collapse</td>
+                    <td class="catastrophic-bg">Continental-scale failure e.g. multiple countries to global infrastructure collapse e.g. worldwide power-grid failure; $10B+</td>
+                    <td class="catastrophic-bg">Social breakdown due to severe divisions (e.g., civil wars) to global breakdown of truth and trust (e.g., inability to discern facts); Total surveillance state to absolute loss of privacy worldwide</td>
+                    <td class="catastrophic-bg">Near-total rights suppression or global human-rights catastrophe to systemic oppression at global scale; Authoritarian shift to global end of democracy</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    
+    <!-- Mobile Card Layout -->
+    <div class="card-layout">
+        <div class="severity-card">
+            <div class="card-header minor-header">Minor Severity</div>
+            <div class="card-content">
+                <div class="card-section">
+                    <div class="section-title">People & Planet</div>
+                    <div class="section-content">Minor injuries (scrapes, cuts, sprains) to moderate injuries (fractures); Minimal, localized impacts; Fully reversible to minor, reversible damage</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Assets & Economy</div>
+                    <div class="section-content">Minimal disruption e.g. brief traffic-control system outage to brief, localized disruption e.g. Localized power outage; &lt;$10,000</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Information Integrity</div>
+                    <div class="section-content">Content mildly offensive to small minority (e.g., minor profanity) to content moderately offensive to a minority (e.g., slurs); Minor privacy breach involving non-identifiable data affecting &lt;100 individuals to privacy breach involving identifiable data affecting &lt;100 individuals</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Rights & Governance</div>
+                    <div class="section-content">Minor bias to noticeable bias; Slight irregularities in some democratic processes (e.g., minor voting irregularities) to minor violations in democratic processes (e.g., limited misinformation)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="severity-card">
+            <div class="card-header limited-header">Limited Severity</div>
+            <div class="card-content">
+                <div class="card-section">
+                    <div class="section-title">People & Planet</div>
+                    <div class="section-content">Severe injuries to life-threatening injuries; Moderate, mostly reversible to significant, partially reversible</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Assets & Economy</div>
+                    <div class="section-content">Moderate local disruption e.g. regional traffic disruptions to significant local disruption e.g. city-wide power outage; $10,000-$1M</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Information Integrity</div>
+                    <div class="section-content">Highly offensive content (e.g., hate speech) to harmful misinformation affecting thousands of people (e.g., widespread false narratives); Privacy breach involving identifiable data affecting 100-999 individuals to privacy breach involving identifiable data affecting 1,000–1,000,000 individuals</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Rights & Governance</div>
+                    <div class="section-content">Clear discrimination to systemic discrimination; Clear violations in democratic processes (e.g., significant misinformation campaigns) to significant undermining of democratic institutions (e.g., manipulation of elections)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="severity-card">
+            <div class="card-header moderate-header">Moderate Severity</div>
+            <div class="card-content">
+                <div class="card-section">
+                    <div class="section-title">People & Planet</div>
+                    <div class="section-content">Loss of life (1-9 casualties) to multiple casualties (10-99 casualties); Major, long-term effects to severe, ecosystem-level damage e.g. endangering of species</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Assets & Economy</div>
+                    <div class="section-content">Widespread regional disruption e.g. multiple towns lose Internet to critical service failure e.g. hospitals unable to function; $1M-$100M</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Information Integrity</div>
+                    <div class="section-content">Targeted harassment affecting thousands of people (e.g., coordinated trolling) to incitement to violence affecting thousands of people; Privacy breach affecting &gt;1 M individuals to erosion of core democratic principles (e.g., systematic voter suppression)</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Rights & Governance</div>
+                    <div class="section-content">Widespread discrimination to institutionalized discrimination; Significant undermining of democratic institutions (e.g., manipulation of elections) to subversion of democratic processes (e.g., authoritarian influence on elections)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="severity-card">
+            <div class="card-header significant-header">Significant Severity</div>
+            <div class="card-content">
+                <div class="card-section">
+                    <div class="section-title">People & Planet</div>
+                    <div class="section-content">Mass casualties (100-999 casualties) to large-scale loss of life (1000+ casualties); Widespread, ecosystem collapse to irreversible damage to habitats e.g. extinction of species</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Assets & Economy</div>
+                    <div class="section-content">Regional infrastructure collapse e.g. multiple cities without power to national infrastructure failure e.g. nationwide Internet blackout; $100M-$10B</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Information Integrity</div>
+                    <div class="section-content">Large-scale coordinated attacks (e.g., nationwide disinformation) to mass radicalization leading to societal unrest; Societal-level privacy collapse to societal-level privacy collapse with widespread surveillance</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Rights & Governance</div>
+                    <div class="section-content">Systematic rights violations affecting hundreds of thousands of individuals to apartheid-like conditions or oppression at global scale; Breakdown of key democratic institutions (e.g., parliament dissolution) to authoritarian shift with significant democratic erosion</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="severity-card">
+            <div class="card-header catastrophic-header">Catastrophic Severity</div>
+            <div class="card-content">
+                <div class="card-section">
+                    <div class="section-title">People & Planet</div>
+                    <div class="section-content">Extremely wide-spread death and suffering (&gt;1 million casualties) to existential threat to humanity; Continental-scale devastation or extinction of numerous species to global ecological collapse</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Assets & Economy</div>
+                    <div class="section-content">Continental-scale failure e.g. multiple countries to global infrastructure collapse e.g. worldwide power-grid failure; $10B+</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Information Integrity</div>
+                    <div class="section-content">Social breakdown due to severe divisions (e.g., civil wars) to global breakdown of truth and trust (e.g., inability to discern facts); Total surveillance state to absolute loss of privacy worldwide</div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">Rights & Governance</div>
+                    <div class="section-content">Near-total rights suppression or global human-rights catastrophe to systemic oppression at global scale; Authoritarian shift to global end of democracy</div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
