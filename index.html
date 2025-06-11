@@ -19,12 +19,13 @@
             overflow-x: auto;
         }
         
+        /* Always show both layouts - let CSS hide/show as needed */
         .table-container {
             overflow-x: auto;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin: 0;
+            margin-bottom: 20px;
             width: 100%;
             min-width: 320px;
         }
@@ -32,19 +33,19 @@
         .severity-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 1000px;
+            min-width: 800px;
             font-family: 'Figtree', Arial, sans-serif;
         }
         
         .severity-table th,
         .severity-table td {
             font-family: 'Figtree', Arial, sans-serif;
-            padding: 12px;
+            padding: 8px;
             text-align: left;
             border: 1px solid #ddd;
             vertical-align: top;
-            font-size: 14px;
-            line-height: 1.4;
+            font-size: 12px;
+            line-height: 1.3;
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
@@ -62,13 +63,13 @@
         .severity-level {
             font-weight: 600;
             font-family: 'Figtree', Arial, sans-serif;
-            writing-mode: horizontal-tb;
             text-align: center;
-            width: 140px;
-            min-width: 140px;
+            width: 100px;
+            min-width: 100px;
             position: sticky;
             left: 0;
             z-index: 5;
+            font-size: 11px;
         }
         
         .minor-severity-header {
@@ -121,42 +122,27 @@
             color: #ffffff;
         }
         
+        /* Card layout - always present, hide on desktop */
         .card-layout {
-            display: none;
             font-family: 'Figtree', Arial, sans-serif;
-        }
-        
-        /* Fallback - ensure something always shows */
-        .mobile-fallback {
             display: none;
-            font-family: 'Figtree', Arial, sans-serif;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            margin: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .mobile-fallback h2 {
-            color: #a32035;
-            margin-bottom: 15px;
         }
         
         .severity-card {
             background: white;
             margin-bottom: 20px;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             font-family: 'Figtree', Arial, sans-serif;
         }
         
         .card-header {
-            padding: 15px;
-            font-weight: 600;
+            padding: 16px;
+            font-weight: 700;
             text-align: center;
             font-family: 'Figtree', Arial, sans-serif;
-            font-size: 18px;
+            font-size: 16px;
         }
         
         .card-header.minor-severity-header,
@@ -171,13 +157,13 @@
         }
         
         .card-content {
-            padding: 15px;
+            padding: 16px;
             font-family: 'Figtree', Arial, sans-serif;
         }
         
         .card-section {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
             border-bottom: 1px solid #eee;
             font-family: 'Figtree', Arial, sans-serif;
         }
@@ -189,213 +175,70 @@
         }
         
         .section-title {
-            font-weight: 600;
+            font-weight: 700;
             color: #a32035;
             margin-bottom: 8px;
             font-family: 'Figtree', Arial, sans-serif;
-            font-size: 16px;
+            font-size: 15px;
         }
         
         .section-content {
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: #333;
         }
 
-        /* Tablet adjustments */
-        @media screen and (max-width: 1024px) {
-            .severity-table {
-                min-width: 900px;
-            }
-            
-            .severity-table th,
-            .severity-table td {
-                padding: 10px;
-                font-size: 13px;
-            }
-            
-            .severity-level {
-                width: 120px;
-                min-width: 120px;
-            }
-        }
-        
-        /* Tablet styles - only applies when card layout is not active */
-        @media screen and (min-width: 769px) and (max-width: 1024px) {
-            .severity-table {
-                min-width: 800px;
-            }
-            
-            .severity-table th,
-            .severity-table td {
-                padding: 8px;
-                font-size: 12px;
-                line-height: 1.3;
-            }
-            
-            .severity-level {
-                width: 100px;
-                min-width: 100px;
-                font-size: 11px;
-            }
-        }
-        
-        /* Switch to card layout for mobile and tablets */
+        /* Mobile-first approach - show cards on small screens */
         @media screen and (max-width: 768px) {
             .table-container {
-                display: none !important;
+                display: none;
             }
             
             .card-layout {
-                display: block !important;
+                display: block;
             }
             
-            .mobile-fallback {
-                display: none !important;
+            body {
+                padding: 12px;
             }
         }
         
-        /* Force card layout for any screen that might be mobile */
+        /* Force mobile layout for touch devices */
         @media screen and (max-device-width: 768px) {
             .table-container {
-                display: none !important;
+                display: none;
             }
             
             .card-layout {
-                display: block !important;
+                display: block;
+            }
+        }
+        
+        /* Additional mobile detection methods */
+        @media only screen and (max-width: 768px) {
+            .table-container {
+                display: none;
             }
             
-            .mobile-fallback {
-                display: none !important;
+            .card-layout {
+                display: block;
             }
         }
         
-        /* Emergency fallback if both table and cards are hidden */
-        @media screen and (max-width: 768px) {
-            body:not(:has(.card-layout:not([style*="display: none"]))) .mobile-fallback {
-                display: block !important;
-            }
-        }
-        
-        /* Simplified mobile detection for problematic environments */
-        @media only screen and (max-width: 768px) {
+        /* Qualtrics-specific mobile override */
+        @media screen and (orientation: portrait) and (max-width: 768px) {
             .table-container {
                 display: none !important;
             }
             
             .card-layout {
                 display: block !important;
-            }
-        }
-            
-            body {
-                padding: 12px;
-            }
-            
-            .severity-card {
-                margin-bottom: 24px;
-                border-radius: 12px;
-            }
-            
-            .card-header {
-                padding: 16px;
-                font-size: 16px;
-                font-weight: 700;
-            }
-            
-            .card-content {
-                padding: 16px;
-            }
-            
-            .card-section {
-                margin-bottom: 16px;
-                padding-bottom: 16px;
-            }
-            
-            .section-title {
-                font-size: 15px;
-                margin-bottom: 8px;
-                font-weight: 700;
-            }
-            
-            .section-content {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        }
-            body {
-                padding: 8px;
-            }
-            
-            .severity-card {
-                margin-bottom: 20px;
-                border-radius: 10px;
-            }
-            
-            .card-header {
-                padding: 14px;
-                font-size: 15px;
-            }
-            
-            .card-content {
-                padding: 14px;
-            }
-            
-            .card-section {
-                margin-bottom: 14px;
-                padding-bottom: 14px;
-            }
-            
-            .section-title {
-                font-size: 14px;
-                margin-bottom: 6px;
-            }
-            
-            .section-content {
-                font-size: 13px;
-                line-height: 1.5;
-            }
-        }
-        
-        /* Very small screens */
-        @media screen and (max-width: 360px) {
-            body {
-                padding: 6px;
-            }
-            
-            .severity-card {
-                margin-bottom: 16px;
-                border-radius: 8px;
-            }
-            
-            .card-header {
-                padding: 12px;
-                font-size: 14px;
-            }
-            
-            .card-content {
-                padding: 12px;
-            }
-            
-            .card-section {
-                margin-bottom: 12px;
-                padding-bottom: 12px;
-            }
-            
-            .section-title {
-                font-size: 13px;
-                margin-bottom: 6px;
-            }
-            
-            .section-content {
-                font-size: 12px;
-                line-height: 1.4;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Table layout for larger screens -->
+    <!-- Table layout for desktop -->
     <div class="table-container">
         <table class="severity-table">
             <thead>
@@ -447,7 +290,7 @@
         </table>
     </div>
     
-    <!-- Card layout for mobile screens -->
+    <!-- Card layout for mobile - always present in HTML -->
     <div class="card-layout">
         <div class="severity-card">
             <div class="card-header minor-severity-header">Minor Severity</div>
@@ -558,16 +401,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Emergency fallback for mobile if neither table nor cards show -->
-    <div class="mobile-fallback">
-        <h2>AI Risk Severity Levels</h2>
-        <p><strong>Minor Severity:</strong> Minor to moderate injuries, minimal disruption, mildly offensive content, minor bias</p>
-        <p><strong>Limited Severity:</strong> Severe to life-threatening injuries, moderate local disruption, highly offensive content, clear discrimination</p>
-        <p><strong>Moderate Severity:</strong> Loss of life (1-99 casualties), widespread regional disruption, targeted harassment, widespread discrimination</p>
-        <p><strong>Significant Severity:</strong> Mass casualties (100-1000+ casualties), regional infrastructure collapse, large-scale attacks, systematic rights violations</p>
-        <p><strong>Catastrophic Severity:</strong> Existential threats, global infrastructure collapse, social breakdown, global end of democracy</p>
     </div>
 </body>
 </html>
