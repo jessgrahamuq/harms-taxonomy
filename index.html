@@ -204,17 +204,8 @@
             }
         }
         
-        /* Mobile landscape */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 8px;
-            }
-            
-            .table-container {
-                border-radius: 6px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            }
-            
+        /* Tablet styles - only applies when card layout is not active */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
             .severity-table {
                 min-width: 800px;
             }
@@ -233,15 +224,27 @@
             }
         }
         
-        /* Switch to card layout for mobile portrait and smaller */
-        @media screen and (max-width: 640px) {
+        /* Switch to card layout for mobile and tablets */
+        @media screen and (max-width: 768px) {
             .table-container {
-                display: none;
+                display: none !important;
             }
             
             .card-layout {
                 display: block !important;
             }
+        }
+        
+        /* Force card layout for any screen that might be mobile */
+        @media screen and (max-device-width: 768px) {
+            .table-container {
+                display: none !important;
+            }
+            
+            .card-layout {
+                display: block !important;
+            }
+        }
             
             body {
                 padding: 12px;
@@ -278,9 +281,6 @@
                 line-height: 1.6;
             }
         }
-        
-        /* Small mobile screens */
-        @media screen and (max-width: 480px) {
             body {
                 padding: 8px;
             }
