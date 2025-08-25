@@ -11,7 +11,7 @@
             margin: 0;
             padding: 8px;
             background-color: #f5f5f5;
-            font-size: 14px;
+            font-size: 16px;
         }
         
         /* Desktop table */
@@ -31,13 +31,14 @@
         }
         
         th, td {
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
             text-align: left;
             vertical-align: top;
-            font-size: 13px;
-            line-height: 1.3;
+            font-size: 15px;
+            line-height: 1.4;
             word-wrap: break-word;
+            color: #000000;
         }
         
         th {
@@ -47,6 +48,7 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            font-size: 16px;
         }
         
         .severity-col {
@@ -57,20 +59,20 @@
             position: sticky;
             left: 0;
             z-index: 5;
-            font-size: 12px;
+            font-size: 14px;
         }
         
-        /* Color classes */
+        /* Color classes - lighter backgrounds */
         .minor-header { background-color: #ffffb2; color: #000; }
-        .minor-bg { background-color: #ffffe0; color: #000; }
+        .minor-bg { background-color: #fffff0; color: #000000; }
         .limited-header { background-color: #fecc5c; color: #000; }
-        .limited-bg { background-color: #fee7a0; color: #000; }
+        .limited-bg { background-color: #fef7e0; color: #000000; }
         .moderate-header { background-color: #fd8d3c; color: #000; }
-        .moderate-bg { background-color: #fec493; color: #000; }
+        .moderate-bg { background-color: #feebc8; color: #000000; }
         .significant-header { background-color: #f03b20; color: #fff; }
-        .significant-bg { background-color: #f78772; color: #000; }
+        .significant-bg { background-color: #fdd5d0; color: #000000; }
         .catastrophic-header { background-color: #bd0026; color: #fff; }
-        .catastrophic-bg { background-color: #e06666; color: #fff; }
+        .catastrophic-bg { background-color: #f5c6cb; color: #000000; }
         
         /* Harm type labels */
         .harm-label {
@@ -93,19 +95,19 @@
         }
         
         .card-header {
-            padding: 16px;
+            padding: 18px;
             font-weight: 700;
             text-align: center;
-            font-size: 16px;
+            font-size: 18px;
         }
         
         .card-content {
-            padding: 16px;
+            padding: 18px;
         }
         
         .card-section {
-            margin-bottom: 16px;
-            padding-bottom: 16px;
+            margin-bottom: 18px;
+            padding-bottom: 18px;
             border-bottom: 1px solid #eee;
         }
         
@@ -118,14 +120,14 @@
         .section-title {
             font-weight: 700;
             color: #a32035;
-            margin-bottom: 8px;
-            font-size: 15px;
+            margin-bottom: 10px;
+            font-size: 17px;
         }
         
         .section-content {
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.6;
-            color: #333;
+            color: #000000;
         }
 
         /* Switch to cards on mobile */
@@ -140,6 +142,7 @@
             
             body {
                 padding: 12px;
+                font-size: 16px;
             }
         }
         
@@ -152,7 +155,7 @@
 <body>
     <!-- Desktop Table -->
     <div class="table-container">
-        <div style="background-color: #f8f9fa; padding: 12px; margin-bottom: 10px; border-radius: 6px; font-size: 13px; color: #555;">
+        <div style="background-color: #f8f9fa; padding: 14px; margin-bottom: 10px; border-radius: 6px; font-size: 15px; color: #000;">
             <strong>Note:</strong> When assessing the <strong>People & Planet</strong> column and thinking about non-human suffering (such as animals and potentially AI welfare), convert to human equivalents when assessing severity levels.
         </div>
         <table>
@@ -267,7 +270,7 @@
     
     <!-- Mobile Card Layout -->
     <div class="card-layout">
-        <div style="background-color: #f8f9fa; padding: 12px; margin-bottom: 16px; border-radius: 6px; font-size: 14px; color: #555;">
+        <div style="background-color: #f8f9fa; padding: 14px; margin-bottom: 16px; border-radius: 6px; font-size: 16px; color: #000;">
             <strong>Note:</strong> When assessing the <strong>People & Planet</strong> column and thinking about non-human suffering (such as animals and potentially AI welfare), convert to human equivalents when assessing severity levels.
         </div>
         <div class="severity-card">
